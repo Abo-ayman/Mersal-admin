@@ -37,6 +37,7 @@ jobs:
           rm -rf app/lib app/test
           cp -r src/lib app/lib
           cp src/pubspec.yaml app/pubspec.yaml
+          if [ -d src/assets ]; then rm -rf app/assets; cp -r src/assets app/assets; fi
           cp src/mersal-admin.jks app/android/app/mersal-admin.jks
           python3 src/scripts/patch_android.py app
 
