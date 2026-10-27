@@ -45,17 +45,17 @@ jobs:
         working-directory: app
         run: |
           flutter pub get
-          flutter build apk --release --split-per-abi
+          flutter build apk --release --target-platform android-arm64
 
       - name: Upload APK as artifact
         uses: actions/upload-artifact@v4
         with:
           name: mersal-admin-apk
-          path: app/build/app/outputs/flutter-apk/*-release.apk
+          path: app/build/app/outputs/flutter-apk/app-release.apk
 
       - name: Publish APK as a release (easy download from phone)
         uses: softprops/action-gh-release@v2
         with:
           tag_name: admin-build-${{ github.run_number }}
           name: Admin build ${{ github.run_number }}
-          files: app/build/app/outputs/flutter-apk/*-release.apk
+          files: app/build/app/outputs/flutter-apk/app-release.apk
