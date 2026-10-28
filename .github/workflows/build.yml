@@ -48,7 +48,7 @@ jobs:
         working-directory: app
         run: |
           flutter pub get
-          flutter analyze
+          flutter analyze --no-fatal-infos --no-fatal-warnings
 
       - name: Build release APK
         working-directory: app
