@@ -33,6 +33,9 @@ jobs:
         run: flutter create --org com.mersal --project-name admin --platforms android app
 
       - name: Apply our code
+        env:
+          MERSAL_KEYSTORE_PASSWORD: ${{ secrets.MERSAL_KEYSTORE_PASSWORD }}
+          MERSAL_KEY_PASSWORD: ${{ secrets.MERSAL_KEY_PASSWORD }}
         run: |
           rm -rf app/lib app/test
           cp -r src/lib app/lib
